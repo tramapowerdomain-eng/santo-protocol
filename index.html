@@ -1,0 +1,822 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080e1b">
+<meta name="description" content="SANTO PROTOCOL - Cyber Security, Technology and Knowledge">
+<title>SANTO PROTOCOL | Cyber Security</title>
+
+<style>
+:root {
+  --bg: #050811;
+  --panel: #0c1423;
+  --blue: #35c9ff;
+  --green: #50dfa5;
+  --purple: #b49aff;
+  --orange: #ffbd69;
+  --text: #f1f5ff;
+  --muted: #8194ae;
+  --line: #26354b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: Arial, Tahoma, sans-serif;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 5%;
+  background: #080e1bf5;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 43px;
+  height: 43px;
+  border: 1px solid var(--blue);
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--blue);
+  background: #101d32;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.brand h1 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.brand small {
+  display: block;
+  color: var(--blue);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.menu {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+}
+
+.menu a {
+  font-size: 12px;
+  color: #b5c8dc;
+}
+
+.menu a:hover {
+  color: var(--blue);
+}
+
+.search {
+  width: 180px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: #111c2e;
+  color: white;
+  outline: none;
+  min-width: 0;
+}
+
+.search:focus {
+  border-color: var(--blue);
+}
+
+.hero {
+  min-height: 440px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 60px 7%;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 80% 15%, #10213b 0, transparent 45%),
+    #070c17;
+}
+
+.hero:after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #35c9ff35;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 35px #35c9ff0c,
+    0 0 0 75px #35c9ff08;
+  left: 7%;
+  top: 60px;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.hero h2 {
+  font-size: clamp(32px, 6vw, 62px);
+  line-height: 1.2;
+  margin: 15px 0;
+}
+
+.hero h2 span {
+  color: var(--blue);
+  text-shadow: 0 0 25px #35c9ff35;
+}
+
+.hero p {
+  max-width: 590px;
+  color: #a8b7cc;
+  font-size: 15px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 19px;
+  border-radius: 9px;
+  border: 1px solid #34445e;
+  background: #111c2e;
+  color: #e3ebf7;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn.primary {
+  background: var(--blue);
+  color: #06101c;
+  border-color: var(--blue);
+  font-weight: bold;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px #35c9ff20;
+}
+
+.stats {
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stats strong {
+  display: block;
+  color: var(--blue);
+  font-size: 18px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 28px 18px;
+}
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 24px 0 17px;
+}
+
+.section-head h2 {
+  font-size: 21px;
+  margin: 0;
+}
+
+.section-head p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 3px 0 0;
+}
+
+.line {
+  height: 1px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+  margin-top: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.card {
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 19px 15px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  transition: .2s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px #00000040;
+}
+
+.card-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 15px;
+  margin: 0 0 5px;
+}
+
+.card p {
+  font-size: 12px;
+  color: #a8b7cc;
+  margin: 0 0 15px;
+  flex: 1;
+}
+
+.card .link {
+  font-size: 12px;
+  color: var(--blue);
+  margin-top: auto;
+}
+
+.card .link:after {
+  content: " ←";
+  font-size: 15px;
+}
+
+.featured {
+  border-color: #284b68;
+  background: #0d192a;
+}
+
+.pill {
+  font-size: 10px;
+  color: var(--blue);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 30px;
+  margin-bottom: 8px;
+}
+
+.notice {
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 11px;
+  background: #101a20;
+  border: 1px solid #28604d;
+  color: #b7c8c5;
+  font-size: 12px;
+}
+
+.notice strong {
+  color: var(--green);
+}
+
+.apps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  padding: 16px 5px;
+  background: #111c2e;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: .2s;
+}
+
+.app:hover {
+  border-color: var(--blue);
+  background: #152238;
+}
+
+.app span {
+  font-size: 27px;
+}
+
+.app strong {
+  font-size: 12px;
+}
+
+.app small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.terminal {
+  background: #03060c;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 19px;
+  margin-top: 25px;
+  font-family: monospace;
+  direction: ltr;
+  text-align: left;
+  overflow: hidden;
+}
+
+.terminal-head {
+  color: var(--green);
+  font-size: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+
+.terminal p {
+  color: var(--green);
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.terminal .dim {
+  color: var(--muted);
+}
+
+.terminal .cursor {
+  color: var(--blue);
+}
+
+footer {
+  text-align: center;
+  padding: 25px 15px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+  background: #080e1b;
+}
+
+footer strong {
+  color: var(--text);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 850px) {
+  .menu {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .apps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero {
+    padding: 48px 6%;
+    min-height: 410px;
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar {
+    padding: 10px;
+  }
+
+  .brand h1 {
+    font-size: 13px;
+  }
+
+  .search {
+    width: 115px;
+    font-size: 11px;
+  }
+
+  .grid {
+    gap: 9px;
+  }
+
+  .card {
+    padding: 14px 11px;
+  }
+
+  .card h3 {
+    font-size: 13px;
+  }
+
+  .hero h2 {
+    font-size: 35px;
+  }
+
+  .stats {
+    gap: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#home">
+    <div class="logo">S</div>
+    <div>
+      <h1>SANTO PROTOCOL</h1>
+      <small>CYBER SECURITY</small>
+    </div>
+  </a>
+
+  <nav class="menu">
+    <a href="#home">الرئيسية</a>
+    <a href="#sections">الأقسام</a>
+    <a href="#apps">التطبيقات</a>
+    <a href="#tools">الأدوات</a>
+  </nav>
+
+  <input class="search" id="search" type="search"
+         placeholder="ابحث في الموقع..." aria-label="ابحث في الموقع">
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">[ SYSTEM ONLINE ] — WELCOME</div>
+    <h2><span>SANTO PROTOCOL</span></h2>
+    <p>
+      بوابتك إلى عالم الأمن السيبراني والتقنية الرقمية.
+      اكتشف الأدوات والمصادر والتطبيقات وتعلّم كيف تحمي نفسك
+      وتفهم العالم الرقمي بعقلية المحترفين.
+    </p>
+
+    <div class="buttons">
+      <a class="btn primary" href="#sections">استكشف الأقسام ↙</a>
+      <a class="btn" href="#learn">ابدأ التعلّم</a>
+    </div>
+
+    <div class="stats">
+      <div><strong>01</strong> KNOWLEDGE</div>
+      <div><strong>02</strong> SECURITY</div>
+      <div><strong>03</strong> TECHNOLOGY</div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+
+  <div class="section-head" id="sections">
+    <div>
+      <h2>⌁ الأقسام الرئيسية</h2>
+      <p>اختر القسم الذي تريد استكشافه</p>
+    </div>
+    <span class="pill">MAIN DIRECTORY</span>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="grid searchable">
+    <a class="card featured" href="#termux">
+      <span class="card-icon">⌨️</span>
+      <h3>قسم التراميكس</h3>
+      <p>تعرف على Termux وأوامر الطرفية والبرمجة على أندرويد.</p>
+      <span class="link">دخول القسم</span>
+    </a>
+
+    <a class="card" href="#security">
+      <span class="card-icon">🛡️</span>
+      <h3>الأمن السيبراني</h3>
+      <p>مبادئ الحماية والشبكات والخصوصية والأمن الرقمي.</p>
+      <span class="link">استكشف</span>
+    </a>
+
+    <a class="card" href="#tools">
+      <span class="card-icon">⚙️</span>
+      <h3>أدوات الحماية</h3>
+      <p>مصادر أدوات فحص الأنظمة والشبكات في بيئات مصرح بها.</p>
+      <span class="link">عرض الأدوات</span>
+    </a>
+
+    <a class="card" href="#apps">
+      <span class="card-icon">🌐</span>
+      <h3>عالم التطبيقات</h3>
+      <p>روابط المنصات الاجتماعية والمواقع الرسمية.</p>
+      <span class="link">عرض التطبيقات</span>
+    </a>
+
+    <a class="card" href="#learn">
+      <span class="card-icon">📡</span>
+      <h3>الشبكات والإنترنت</h3>
+      <p>تعلم أساسيات الشبكات وDNS وHTTP ومفاهيم الاتصال.</p>
+      <span class="link">ابدأ التعلّم</span>
+    </a>
+
+    <a class="card" href="#learn">
+      <span class="card-icon">💻</span>
+      <h3>البرمجة والتطوير</h3>
+      <p>مصادر HTML وCSS وJavaScript وPython للمبتدئين.</p>
+      <span class="link">تعلم البرمجة</span>
+    </a>
+
+    <a class="card" href="#learn">
+      <span class="card-icon">🔐</span>
+      <h3>حماية الحسابات</h3>
+      <p>كلمات مرور قوية والمصادقة الثنائية ومقاومة التصيد.</p>
+      <span class="link">تعلم الحماية</span>
+    </a>
+
+    <a class="card" href="#links">
+      <span class="card-icon">🔗</span>
+      <h3>روابط مهمة</h3>
+      <p>مواقع تعليمية ومراجع تقنية وأدلة موثوقة.</p>
+      <span class="link">افتح الدليل</span>
+    </a>
+  </div>
+
+  <div class="section-head" id="termux">
+    <div>
+      <h2>⌨️ قسم TERMUX</h2>
+      <p>أدوات الطرفية والتطوير على الهاتف</p>
+    </div>
+    <span class="pill">ANDROID LAB</span>
+  </div>
+
+  <div class="grid searchable">
+    <a class="card" href="https://termux.dev/" target="_blank" rel="noopener">
+      <span class="card-icon">📱</span>
+      <h3>موقع Termux الرسمي</h3>
+      <p>معلومات المشروع والوثائق الرسمية.</p>
+      <span class="link">زيارة الموقع</span>
+    </a>
+
+    <a class="card" href="https://github.com/termux/termux-app" target="_blank" rel="noopener">
+      <span class="card-icon">📦</span>
+      <h3>Termux على GitHub</h3>
+      <p>المشروع والمصدر والتحديثات.</p>
+      <span class="link">فتح GitHub</span>
+    </a>
+
+    <a class="card" href="https://wiki.termux.com/" target="_blank" rel="noopener">
+      <span class="card-icon">📚</span>
+      <h3>دليل Termux</h3>
+      <p>تعرف على الطرفية والحزم والأوامر.</p>
+      <span class="link">قراءة الدليل</span>
+    </a>
+
+    <a class="card" href="https://git-scm.com/doc" target="_blank" rel="noopener">
+      <span class="card-icon">⌘</span>
+      <h3>دليل Git</h3>
+      <p>تعلم إدارة المشاريع والأكواد.</p>
+      <span class="link">فتح الدليل</span>
+    </a>
+  </div>
+
+  <div class="section-head" id="security">
+    <div>
+      <h2>🛡️ الأمن السيبراني</h2>
+      <p>تعلم واختبر داخل بيئة تملكها أو لديك تصريح باستخدامها</p>
+    </div>
+  </div>
+
+  <div class="grid searchable">
+    <a class="card" href="https://owasp.org/" target="_blank" rel="noopener">
+      <span class="card-icon">🌐</span>
+      <h3>OWASP</h3>
+      <p>مصادر أمن تطبيقات الويب وأشهر المخاطر.</p>
+      <span class="link">الموقع الرسمي</span>
+    </a>
+
+    <a class="card" href="https://portswigger.net/web-security" target="_blank" rel="noopener">
+      <span class="card-icon">🧪</span>
+      <h3>Web Security Academy</h3>
+      <p>دروس عملية ومختبرات تعليمية لأمن الويب.</p>
+      <span class="link">ابدأ التدريب</span>
+    </a>
+
+    <a class="card" href="https://tryhackme.com/" target="_blank" rel="noopener">
+      <span class="card-icon">🎯</span>
+      <h3>TryHackMe</h3>
+      <p>مسارات تعليمية وتحديات أمنية داخل مختبرات.</p>
+      <span class="link">استكشف المختبرات</span>
+    </a>
+
+    <a class="card" href="https://www.kali.org/" target="_blank" rel="noopener">
+      <span class="card-icon">🐉</span>
+      <h3>Kali Linux</h3>
+      <p>نظام وأدوات لاختبارات الأمان المصرح بها.</p>
+      <span class="link">الموقع الرسمي</span>
+    </a>
+  </div>
+
+  <div class="section-head" id="tools">
+    <div>
+      <h2>⚙️ مكتبة الأدوات</h2>
+      <p>مصادر رسمية للتعلم والتحليل والحماية</p>
+    </div>
+  </div>
+
+  <div class="grid searchable">
+    <a class="card" href="https://nmap.org/" target="_blank" rel="noopener">
+      <span class="card-icon">🔎</span>
+      <h3>Nmap</h3>
+      <p>اكتشاف الأجهزة والخدمات على الشبكات المصرح بفحصها.</p>
+      <span class="link">الموقع الرسمي</span>
+    </a>
+
+    <a class="card" href="https://www.wireshark.org/" target="_blank" rel="noopener">
+      <span class="card-icon">📡</span>
+      <h3>Wireshark</h3>
+      <p>تحليل حركة الشبكات والتعلم من بيانات الاتصال.</p>
+      <span class="link">الموقع الرسمي</span>
+    </a>
+
+    <a class="card" href="https://www.python.org/" target="_blank" rel="noopener">
+      <span class="card-icon">🐍</span>
+      <h3>Python</h3>
+      <p>لغة برمجة للأتمتة والتحليل وبناء الأدوات.</p>
+      <span class="link">تعلم Python</span>
+    </a>
+
+    <a class="card" href="https://github.com/" target="_blank" rel="noopener">
+      <span class="card-icon">💻</span>
+      <h3>GitHub</h3>
+      <p>اكتشف المشاريع المفتوحة المصدر والوثائق البرمجية.</p>
+      <span class="link">فتح GitHub</span>
+    </a>
+  </div>
+
+  <div class="section-head" id="apps">
+    <div>
+      <h2>🌐 دليل التطبيقات والمنصات</h2>
+      <p>اضغط على أي تطبيق لفتح موقعه الرسمي</p>
+    </div>
+    <span class="pill">SOCIAL DIRECTORY</span>
+  </div>
+
+  <div class="apps searchable">
+    <a class="app" href="https://www.whatsapp.com/" target="_blank" rel="noopener"><span>🟢</span><strong>WhatsApp</strong><small>واتساب</small></a>
+    <a class="app" href="https://telegram.org/" target="_blank" rel="noopener"><span>✈️</span><strong>Telegram</strong><small>تليجرام</small></a>
+    <a class="app" href="https://www.instagram.com/" target="_blank" rel="noopener"><span>📸</span><strong>Instagram</strong><small>إنستغرام</small></a>
+    <a class="app" href="https://www.facebook.com/" target="_blank" rel="noopener"><span>🔵</span><strong>Facebook</strong><small>فيسبوك</small></a>
+    <a class="app" href="https://x.com/" target="_blank" rel="noopener"><span>𝕏</span><strong>X / Twitter</strong><small>إكس</small></a>
+    <a class="app" href="https://www.tiktok.com/" target="_blank" rel="noopener"><span>🎵</span><strong>TikTok</strong><small>تيك توك</small></a>
+    <a class="app" href="https://www.youtube.com/" target="_blank" rel="noopener"><span>▶️</span><strong>YouTube</strong><small>يوتيوب</small></a>
+    <a class="app" href="https://www.snapchat.com/" target="_blank" rel="noopener"><span>👻</span><strong>Snapchat</strong><small>سناب شات</small></a>
+    <a class="app" href="https://discord.com/" target="_blank" rel="noopener"><span>🎮</span><strong>Discord</strong><small>ديسكورد</small></a>
+    <a class="app" href="https://www.reddit.com/" target="_blank" rel="noopener"><span>🟠</span><strong>Reddit</strong><small>ريديت</small></a>
+    <a class="app" href="https://www.linkedin.com/" target="_blank" rel="noopener"><span>💼</span><strong>LinkedIn</strong><small>لينكدإن</small></a>
+    <a class="app" href="https://www.messenger.com/" target="_blank" rel="noopener"><span>💬</span><strong>Messenger</strong><small>ماسنجر</small></a>
+    <a class="app" href="https://www.twitch.tv/" target="_blank" rel="noopener"><span>🎙️</span><strong>Twitch</strong><small>تويتش</small></a>
+    <a class="app" href="https://open.spotify.com/" target="_blank" rel="noopener"><span>🎧</span><strong>Spotify</strong><small>سبوتيفاي</small></a>
+    <a class="app" href="https://www.pinterest.com/" target="_blank" rel="noopener"><span>📌</span><strong>Pinterest</strong><small>بينترست</small></a>
+  </div>
+
+  <div class="section-head" id="learn">
+    <div>
+      <h2>📚 أكاديمية التعلّم</h2>
+      <p>ابدأ من الأساسيات وتقدم خطوة بخطوة</p>
+    </div>
+  </div>
+
+  <div class="grid searchable">
+    <a class="card" href="https://developer.mozilla.org/" target="_blank" rel="noopener">
+      <span class="card-icon">🧱</span>
+      <h3>MDN Web Docs</h3>
+      <p>مرجع HTML وCSS وJavaScript وتطوير الويب.</p>
+      <span class="link">تعلم تطوير المواقع</span>
+    </a>
+
+    <a class="card" href="https://www.freecodecamp.org/" target="_blank" rel="noopener">
+      <span class="card-icon">🎓</span>
+      <h3>freeCodeCamp</h3>
+      <p>تعلم البرمجة من خلال دروس ومشاريع تطبيقية.</p>
+      <span class="link">ابدأ مجاناً</span>
+    </a>
+
+    <a class="card" href="https://www.cisa.gov/secure-our-world" target="_blank" rel="noopener">
+      <span class="card-icon">🔒</span>
+      <h3>الأمان الرقمي</h3>
+      <p>إرشادات لحماية حساباتك وبياناتك من التهديدات.</p>
+      <span class="link">تعلم الحماية</span>
+    </a>
+
+    <a class="card" href="https://www.eff.org/" target="_blank" rel="noopener">
+      <span class="card-icon">🕶️</span>
+      <h3>الخصوصية الرقمية</h3>
+      <p>مصادر عن الحقوق الرقمية والخصوصية على الإنترنت.</p>
+      <span class="link">اكتشف المزيد</span>
+    </a>
+  </div>
+
+  <div class="notice" id="links">
+    <strong>تنبيه أمني:</strong>
+    هذا الموقع دليل تعليمي وروابط لمصادر خارجية.
+    استخدم أدوات الفحص والاختبار على أجهزتك أو داخل مختبرات
+    تملكها أو لديك تصريح واضح باستخدامها، واحترم خصوصية الآخرين.
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-head">SANTO PROTOCOL :: SYSTEM STATUS</div>
+    <p>&gt; Initializing knowledge base...</p>
+    <p>&gt; Learning is the ultimate power.</p>
+    <p class="dim">&gt; Protect your identity. Secure your digital world.</p>
+    <p class="cursor">&gt; SYSTEM READY_</p>
+  </div>
+
+</main>
+
+<footer>
+  <strong>◆ SANTO PROTOCOL</strong><br>
+  CYBER SECURITY • TECHNOLOGY • KNOWLEDGE<br>
+  © 2026 SANTO PROTOCOL — جميع الحقوق محفوظة
+</footer>
+
+<script>
+const search = document.getElementById("search");
+const items = document.querySelectorAll(".searchable .card, .searchable .app");
+
+search.addEventListener("input", function () {
+  const query = this.value.trim().toLowerCase();
+
+  items.forEach(function(item) {
+    item.classList.toggle(
+      "hidden",
+      !item.innerText.toLowerCase().includes(query)
+    );
+  });
+});
+</script>
+
+</body>
+  </html>
+  
